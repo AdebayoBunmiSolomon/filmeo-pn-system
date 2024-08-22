@@ -1,8 +1,8 @@
 import { collection, getDocs } from "firebase/firestore";
 import { useState } from "react";
-import { firestoreDB } from "./firebase";
+import { firestoreDB } from "../firebase";
 
-type pushTokenDataType = {
+export type pushTokenDataType = {
   date_created: string | undefined;
   device_name: string | undefined | null;
   device_type: string | undefined;
@@ -12,7 +12,7 @@ type pushTokenDataType = {
 
 export const useGetAllTokens = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [pushTokenData, setPushTokenData] = useState<pushTokenDataType | any>(
+  const [pushTokenData, setPushTokenData] = useState<pushTokenDataType | any[]>(
     []
   );
 
