@@ -27,20 +27,18 @@ export const App: React.FC<{}> = () => {
   const onSubmit = async (data: formType) => {
     if (data && pushTokenData) {
       try {
-        await Promise.all(
-          pushTokenData.map(async (item) => {
-            if (item?.subscribed) {
-              await sendPushNotification({
-                token: item?.token,
-                sound: "default",
-                title: data?.title,
-                body: data?.body,
-              });
-            } else {
-              console.log("Not subscribed to");
-            }
-          })
-        );
+        pushTokenData.map(async (item) => {
+          if (item?.subscribed) {
+            await sendPushNotification({
+              token: item?.token,
+              sound: "default",
+              title: data?.title,
+              body: data?.body,
+            });
+          } else {
+            console.log("Not subscribed to");
+          }
+        });
       } catch (error) {
         console.error("Error sending push notifications:", error);
       }

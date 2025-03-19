@@ -19,7 +19,6 @@ export const useSendPushNotification = () => {
       body: data.body,
     };
     try {
-      setSending(true);
       fetch("https://exp.host/--/api/v2/push/send", {
         method: "POST",
         mode: "no-cors",
